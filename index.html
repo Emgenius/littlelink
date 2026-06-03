@@ -1,55 +1,29 @@
 <!DOCTYPE html>
-<!--
-
-To change the theme, change the class on the html tag below to one of:
-
-- theme-auto: Automatically switches based on user's system preferences
-
-- theme-light: Forces light theme
-
-- theme-dark: Forces dark theme
-
--->
-
-<html class="theme-auto" lang="fr"> <!-- Update`class="theme-auto" with your preference -->
+<html class="theme-auto" lang="fr">
 
 <head>
-
 <meta charset="utf-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Page Title - Change this to your name/brand (50-60 characters recommended) -->
-
 <title>Emgenius.art</title>
-
-<link rel="icon" type="image/x-icon" href="/images/emgenius.png"> <!-- Update this with your own favicon -->
-
-<!-- Meta Description - Write a description (150-160 characters recommended) -->
-
+<link rel="icon" type="image/x-icon" href="/images/emgenius.png">
 <meta name="description" content="La page profil de Emgenius">
-
-<!-- Keywords -->
-
 <meta name="keywords" content="your media, fun, content, creation, parody, sarcasm">
-
-<!-- Canonical URL - Helps prevent duplicate content issues -->
-
 <meta rel="canonical" href="https://emgenius.art">
-
-<!-- Author Information -->
-
 <meta name="author" content="Emgenius">
 
 <!-- Stylesheets -->
-
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/brands.css">
 
+<!-- Google Fonts: Syne (display) + DM Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
 <style>
 /* ═══════════════════════════════════════════════════════
-   LINK CARD MOSAIC — Blue palette inspired by Ecran Mobile
+   EMGENIUS.ART — Blue palette inspired by Ecran Mobile
 ═══════════════════════════════════════════════════════ */
 
 :root {
@@ -67,20 +41,76 @@ To change the theme, change the class on the html tag below to one of:
   --em-subtext:   #8ba4be;
   --em-glow:      0 0 18px rgba(56, 189, 248, 0.3);
   --em-glow-feat: 0 0 22px rgba(26, 127, 193, 0.45);
-  --ff-mono:      'Courier New', 'Menlo', monospace;
+  --ff-display:   'Syne', sans-serif;
+  --ff-mono:      'DM Mono', 'Courier New', monospace;
 }
 
-/* Override LittleLink's button-stack with the mosaic */
+/* ── Avatar: wider & styled ── */
+img.avatar {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 12px !important;
+  border: 2px solid rgba(26, 127, 193, 0.5) !important;
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.2) !important;
+  margin-bottom: 1.1rem !important;
+  object-fit: cover;
+}
+
+/* ── Handle / h1 ── */
+.column h1 {
+  font-family: var(--ff-display) !important;
+  font-size: 1.55rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 0.25rem !important;
+  line-height: 1.1 !important;
+}
+
+.column h1 div {
+  background: linear-gradient(90deg, #38bdf8 0%, #e2eaf4 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Tagline / quote ── */
+.column q {
+  font-family: var(--ff-mono) !important;
+  font-style: italic !important;
+  font-size: 0.7rem !important;
+  color: var(--em-subtext) !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+.column q::before,
+.column q::after { content: '' !important; }
+
+/* ── Bio paragraphs ── */
+.column p {
+  font-family: var(--ff-mono) !important;
+  font-size: 0.76rem !important;
+  font-weight: 300 !important;
+  color: var(--em-subtext) !important;
+  line-height: 1.75 !important;
+  letter-spacing: 0.015em !important;
+  max-width: 490px;
+  margin: 0 auto 0.3rem !important;
+}
+
+/* ── Override LittleLink button-stack → mosaic grid ── */
 .button-stack {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
   gap: 10px;
   max-width: 680px;
-  margin: 1.5rem auto 0;
+  margin: 1.6rem auto 0;
   padding: 0 12px;
 }
 
-/* Hide all original buttons completely */
+/* Hide all original LittleLink buttons */
 .button-stack a.button {
   display: none !important;
 }
@@ -108,7 +138,6 @@ To change the theme, change the class on the html tag below to one of:
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Stagger animation delays */
 .link-card:nth-child(1)  { animation-delay: 0.05s; }
 .link-card:nth-child(2)  { animation-delay: 0.10s; }
 .link-card:nth-child(3)  { animation-delay: 0.15s; }
@@ -136,25 +165,22 @@ To change the theme, change the class on the html tag below to one of:
   transform: translateY(-2px);
   box-shadow: var(--em-glow);
 }
-
 .link-card:hover::before { opacity: 1; }
 
-/* ── Featured variant (stronger blue accent) ── */
+/* ── Featured variant ── */
 .link-card.featured {
   background: linear-gradient(135deg, var(--em-bg4), rgba(14, 165, 233, 0.08));
   border-color: rgba(26, 127, 193, 0.55);
 }
-
 .link-card.featured:hover {
   border-color: var(--em-sky);
   box-shadow: var(--em-glow-feat);
   background: linear-gradient(135deg, #1a2d42, rgba(14, 165, 233, 0.14));
 }
 
-/* ── Icon container ── */
+/* ── Icon ── */
 .link-card-icon {
-  width: 34px;
-  height: 34px;
+  width: 34px; height: 34px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -162,25 +188,22 @@ To change the theme, change the class on the html tag below to one of:
   background: rgba(26, 127, 193, 0.15);
   border: 1px solid rgba(56, 189, 248, 0.15);
   border-radius: 4px;
-  font-size: 18px;
 }
-
 .link-card-icon img {
-  width: 18px;
-  height: 18px;
+  width: 18px; height: 18px;
   filter: brightness(0) invert(1);
   opacity: 0.85;
 }
 
-/* ── Text ── */
+/* ── Card text ── */
 .link-card-label {
-  font-size: 0.875rem;
+  font-family: var(--ff-display);
+  font-size: 0.82rem;
   font-weight: 600;
   line-height: 1.2;
   color: var(--em-text);
   letter-spacing: 0.01em;
 }
-
 .link-card-sub {
   font-family: var(--ff-mono);
   font-size: 0.6rem;
@@ -190,46 +213,95 @@ To change the theme, change the class on the html tag below to one of:
   opacity: 0.8;
 }
 
-/* ── Cards section wrapper ── */
-.links-mosaic {
-  width: 100%;
-  max-width: 680px;
-  margin: 0 auto;
+/* ── Mood image — fixed bottom-right ── */
+.mood-frame {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 120px;
+  height: 120px;
+  border: 2px dashed rgba(56, 189, 248, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(13, 22, 38, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  z-index: 100;
+  cursor: pointer;
+}
+.mood-frame:hover {
+  border-color: var(--em-cyan);
+  box-shadow: var(--em-glow);
 }
 
-/* ── Responsive: single column on very small screens ── */
+/* Replace src="" with your image path to display it */
+.mood-frame img.mood-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* opacity 0 = placeholder visible; set to 1 once you have an image */
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+/* Placeholder content */
+.mood-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: var(--ff-mono);
+  font-size: 0.5rem;
+  color: rgba(56, 189, 248, 0.4);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
+  pointer-events: none;
+}
+.mood-hint svg { opacity: 0.35; }
+
+/* Responsive */
 @media (max-width: 420px) {
   .button-stack {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
+  .mood-frame {
+    width: 80px; height: 80px;
+    bottom: 14px; right: 14px;
+  }
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
-
 <div class="column">
 
-<img class="avatar avatar--none" src="images/avatar.png" srcset="images/74a39f1d-3ef8-4a6c-a090-9aa474dec86d.png" alt="LittleLink">
+<!-- ── Avatar ── -->
+<img class="avatar avatar--none" src="images/avatar.png" srcset="images/74a39f1d-3ef8-4a6c-a090-9aa474dec86d.png" alt="Emgenius">
 
-<h1>
-  <div>@Emgenius.art</div>
-</h1>
+<!-- ── Handle ── -->
+<h1><div>@Emgenius.art</div></h1>
 
-<div><q> Sutor ne supra crepidam </q></div>
+<!-- ── Tagline ── -->
+<div><q>Sutor ne supra crepidam</q></div>
 
-<p>👑Roi des Scrolls / Tech / 🎙️ indie rock / ROFL / ⏚
+<!-- ── Bio ── -->
+<p>👑 Roi des Scrolls / Tech / 🎙️ indie rock / ROFL / ⏚</p>
+<p>Product Owner 🌍 / 📱 + veille tech + ✍️ écrit : médias &amp; mobile &amp; culture + 🦴 Zebra KC Osint crew</p>
 
-<p>Product Owner 🌍/ 📱 + veille tech + ✍️ écrit : médias & mobile & culture +🦴 Zebra KC Osint crew</p>
-
-<!-- ═══════════════════════════════════════════
-     LINK CARD MOSAIC (remplace le button-stack)
-     Liens identiques à l'index original
-═══════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     LINK CARD MOSAIC
+══════════════════════════════════════ -->
 <div class="button-stack" role="navigation">
 
   <!-- Bluesky -->
@@ -343,15 +415,34 @@ To change the theme, change the class on the html tag below to one of:
   </a>
 
 </div>
-<!-- fin link-card mosaic -->
+<!-- fin mosaic -->
 
-<!-- Feel free to add your own footer information -->
 <footer>
   <a href="privacy.html">Privacy Policy</a> | Crée ton Little link en forkant <a href="https://littlelink.io" target="_blank" rel="noopener">LittleLink</a>
 </footer>
 
 </div>
+</div>
 
+<!-- ══════════════════════════════════════════════
+     MOOD IMAGE — fixed bottom-right
+     Instructions:
+     1. Remplace src="" par le chemin de ton image
+        (ex: src="images/mood.png")
+     2. Passe opacity à 1 sur .mood-frame img.mood-img
+     3. La taille est 120×120px comme l'avatar
+══════════════════════════════════════════════ -->
+<div class="mood-frame" title="Mood du moment">
+  <!-- Remplace src="" par ton image (PNG fond transparent recommandé, 120×120px) -->
+  <img class="mood-img" src="" alt="mood">
+  <div class="mood-hint">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5">
+      <rect x="3" y="3" width="18" height="18" rx="3"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <path d="M21 15l-5-5L5 21"/>
+    </svg>
+    mood<br>image
+  </div>
 </div>
 
 </body>
