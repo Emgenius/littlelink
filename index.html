@@ -1,414 +1,358 @@
 <!DOCTYPE html>
-
 <!--
-  To change the theme, change the class on the html tag below to one of:
-  - theme-auto: Automatically switches based on user's system preferences
-  - theme-light: Forces light theme
-  - theme-dark: Forces dark theme
+
+To change the theme, change the class on the html tag below to one of:
+
+- theme-auto: Automatically switches based on user's system preferences
+
+- theme-light: Forces light theme
+
+- theme-dark: Forces dark theme
+
 -->
 
 <html class="theme-auto" lang="fr"> <!-- Update`class="theme-auto" with your preference -->
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
 
-    <!-- Page Title - Change this to your name/brand (50-60 characters recommended) -->
-    <title>Emgenius.art</title>
-    <link rel="icon" type="image/x-icon" href="/images/emgenius.png"> <!-- Update this with your own favicon -->
+<meta charset="utf-8">
 
-    <!-- Meta Description - Write a description (150-160 characters recommended) -->
-    <meta name="description" content="La page profil de Emgenius">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Keywords -->
-    <meta name="keywords" content="your media, fun, content, creation, parody, sarcasm">
+<!-- Page Title - Change this to your name/brand (50-60 characters recommended) -->
 
-    <!-- Canonical URL - Helps prevent duplicate content issues -->
-    <meta rel="canonical" href="https://emgenius.art">
+<title>Emgenius.art</title>
 
-    <!-- Author Information -->
-    <meta name="author" content="Emgenius">
+<link rel="icon" type="image/x-icon" href="/images/emgenius.png"> <!-- Update this with your own favicon -->
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/brands.css">
+<!-- Meta Description - Write a description (150-160 characters recommended) -->
 
-    <!-- LittleLink Extended Stylesheet (Optional) -->
-    <!-- <link rel="stylesheet" href="css/brands-extended.css"> -->
-    <!-- Learn more at https://github.com/sethcottle/littlelink-extended.
-         Remove comments if you've added LittleLink Extended dependencies -->
+<meta name="description" content="La page profil de Emgenius">
 
-  </head>
+<!-- Keywords -->
+
+<meta name="keywords" content="your media, fun, content, creation, parody, sarcasm">
+
+<!-- Canonical URL - Helps prevent duplicate content issues -->
+
+<meta rel="canonical" href="https://emgenius.art">
+
+<!-- Author Information -->
+
+<meta name="author" content="Emgenius">
+
+<!-- Stylesheets -->
+
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/brands.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   LINK CARD MOSAIC — Blue palette inspired by Ecran Mobile
+═══════════════════════════════════════════════════════ */
+
+:root {
+  --em-bg:        #0a0e14;
+  --em-bg2:       #0f1620;
+  --em-bg3:       #131c2a;
+  --em-bg4:       #182233;
+  --em-border:    rgba(30, 90, 160, 0.35);
+  --em-blue:      #1a7fc1;
+  --em-cyan:      #38bdf8;
+  --em-sky:       #0ea5e9;
+  --em-deep:      #0c4a6e;
+  --em-muted:     #6b8aaa;
+  --em-text:      #e2eaf4;
+  --em-subtext:   #8ba4be;
+  --em-glow:      0 0 18px rgba(56, 189, 248, 0.3);
+  --em-glow-feat: 0 0 22px rgba(26, 127, 193, 0.45);
+  --ff-mono:      'Courier New', 'Menlo', monospace;
+}
+
+/* Override LittleLink's button-stack with the mosaic */
+.button-stack {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 10px;
+  max-width: 680px;
+  margin: 1.5rem auto 0;
+  padding: 0 12px;
+}
+
+/* Hide all original buttons completely */
+.button-stack a.button {
+  display: none !important;
+}
+
+/* ── Card base ── */
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--em-bg3);
+  border: 1px solid var(--em-border);
+  border-radius: 6px;
+  color: var(--em-text);
+  text-decoration: none;
+  transition: border-color 0.25s, background 0.25s, transform 0.2s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  animation: cardIn 0.4s ease both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger animation delays */
+.link-card:nth-child(1)  { animation-delay: 0.05s; }
+.link-card:nth-child(2)  { animation-delay: 0.10s; }
+.link-card:nth-child(3)  { animation-delay: 0.15s; }
+.link-card:nth-child(4)  { animation-delay: 0.20s; }
+.link-card:nth-child(5)  { animation-delay: 0.25s; }
+.link-card:nth-child(6)  { animation-delay: 0.30s; }
+.link-card:nth-child(7)  { animation-delay: 0.35s; }
+.link-card:nth-child(8)  { animation-delay: 0.40s; }
+.link-card:nth-child(9)  { animation-delay: 0.45s; }
+.link-card:nth-child(10) { animation-delay: 0.50s; }
+
+.link-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(56,189,248,0.04), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.link-card:hover {
+  border-color: var(--em-cyan);
+  background: var(--em-bg4);
+  transform: translateY(-2px);
+  box-shadow: var(--em-glow);
+}
+
+.link-card:hover::before { opacity: 1; }
+
+/* ── Featured variant (stronger blue accent) ── */
+.link-card.featured {
+  background: linear-gradient(135deg, var(--em-bg4), rgba(14, 165, 233, 0.08));
+  border-color: rgba(26, 127, 193, 0.55);
+}
+
+.link-card.featured:hover {
+  border-color: var(--em-sky);
+  box-shadow: var(--em-glow-feat);
+  background: linear-gradient(135deg, #1a2d42, rgba(14, 165, 233, 0.14));
+}
+
+/* ── Icon container ── */
+.link-card-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 127, 193, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+.link-card-icon img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+/* ── Text ── */
+.link-card-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--em-text);
+  letter-spacing: 0.01em;
+}
+
+.link-card-sub {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  color: var(--em-subtext);
+  letter-spacing: 0.04em;
+  margin-top: 0.2rem;
+  opacity: 0.8;
+}
+
+/* ── Cards section wrapper ── */
+.links-mosaic {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ── Responsive: single column on very small screens ── */
+@media (max-width: 420px) {
+  .button-stack {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+</style>
+
+</head>
 
 <body>
 
-    <div class="container">
-        <div class="column">
+<div class="container">
 
-            <!--
-              By default, the Avatar is rounded. Use the following:
-              - avatar--rounded: Automatically rounds the image
-              - avatar--soft: Slightly rounds the image
-              - avatar--none: Removes any rounding
+<div class="column">
 
-              Be sure to replace the src with your own image path and update the alt text
-            -->
-            <img class="avatar avatar--none" src="images/avatar.png" srcset="images/74a39f1d-3ef8-4a6c-a090-9aa474dec86d.png" alt="LittleLink">
+<img class="avatar avatar--none" src="images/avatar.png" srcset="images/74a39f1d-3ef8-4a6c-a090-9aa474dec86d.png" alt="LittleLink">
 
-            <!-- Replace with your name or brand -->
-            <h1>
-              <div>@Emgenius.art</div>
-            </h1>
-           <div><q> Sutor ne supra crepidam </q></div>
+<h1>
+  <div>@Emgenius.art</div>
+</h1>
 
-            <!-- Add a short description about yourself or your brand -->
-            <p>👑Roi des Scrolls / Tech / 🎙️ indie rock / ROFL / ⏚ 
-            <p>Product Owner 🌍/ 📱 + veille tech + ✍️ écrit : médias & mobile & culture +🦴 Zebra KC Osint crew</p>
+<div><q> Sutor ne supra crepidam </q></div>
 
-            <!-- All your buttons go here -->
-         <!-- style="display: none;  dans la classe pour masquer" --> 
-            <div class="button-stack" role="navigation">
+<p>👑Roi des Scrolls / Tech / 🎙️ indie rock / ROFL / ⏚
 
-              <!-- Default LittleLink -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/littlelink.svg" alt="LittleLink Logo">LittleLink</a>
-               
-              <!-- Bluesky -->
-              <a class="button button-bluesky" href="https://bsky.app/profile/emgenius.art" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/bluesky.svg" alt="Bluesky Logo">Bluesky</a>
+<p>Product Owner 🌍/ 📱 + veille tech + ✍️ écrit : médias & mobile & culture +🦴 Zebra KC Osint crew</p>
 
-              <!-- Bluesky Alt -->
-              <a class="button button-bluesky-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/bluesky-alt.svg" alt="Bluesky Logo">Bluesky</a>
+<!-- ═══════════════════════════════════════════
+     LINK CARD MOSAIC (remplace le button-stack)
+     Liens identiques à l'index original
+═══════════════════════════════════════════ -->
+<div class="button-stack" role="navigation">
 
-              <!-- Amazon -->
-              <a class="button button-amazon" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/amazon.svg" alt="Amazon Wishlist Logo">Amazon Wishlist</a>
-
-              <!-- Amazon Music -->
-              <a class="button button-amazon-music" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/amazon-music.svg" alt="Amazon Music Logo">Listen on Amazon Music</a>
-
-              <!-- Apple App Store -->
-              <a class="button button-appstore" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/apple.svg" alt="Apple Logo">Apple App Store</a>
-
-              <!-- Apple Invites -->
-              <a class="button button-invites" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/apple-invites.svg" alt="Apple Invites Logo">Apple Invites</a>
-
-              <!-- Apple Music -->
-              <a class="button button-apple-music" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/apple-music.svg" alt="Apple Music Logo">Listen on Apple Music</a>
-
-              <!-- Apple Music Alternate -->
-              <a class="button button-apple-music-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/apple-music-alt.svg" alt="Apple Music Logo">Listen on Apple Music</a>
-
-              <!-- Apple Podcasts -->
-              <a class="button button-apple-podcasts" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/apple-podcasts.svg" alt="Apple Podcasts Logo">Listen on Apple Podcasts</a>
-
-              <!-- Apple Podcasts Alternate -->
-              <a class="button button-apple-podcasts-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/apple-podcasts-alt.svg" alt="Apple Podcasts Logo">Listen on Apple Podcasts</a>
-
-              <!-- Bandcamp -->
-              <a class="button button-bandcamp" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/bandcamp.svg" alt="Bandcamp Logo">Bandcamp</a>
-
-              <!-- Behance -->
-              <a class="button button-behance" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/behance.svg" alt="Behance Logo">Behance</a>
-                           <!-- Buy Me A Coffee -->
-              <a class="button button-coffee" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/buy-me-a-coffee.svg" alt="Buy Me A Coffee Logo">Buy Me A Coffee</a>
-
-              <!-- Cal.com -->
-              <a class="button button-cal" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/cal.svg" alt="Cal.com Logo">Schedule with Cal.com</a>
-
-              <!-- Calendly -->
-              <a class="button button-calendly" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/calendly.svg" alt="Calendly Logo">Schedule with Calendly</a>
-
-              <!-- Cash App -->
-              <a class="button button-cash-app" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/cash-app-dollar.svg" alt="Cash App Logo">Cash App</a>
-
-              <!-- Dev.to -->
-              <a class="button button-dev-to" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/dev-to.svg" alt="Dev.to Logo">Dev.to</a>
-
-              <!-- Discogs -->
-              <a class="button button-discogs" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/discogs.svg" alt="Discogs Logo">Discogs</a>
-
-              <!-- Discogs Alt -->
-              <a class="button button-discogs-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/discogs-alt.svg" alt="Discogs Logo">Discogs</a>
-
-              <!-- Discord -->
-              <a class="button button-discord" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/discord.svg" alt="Discord Logo">Discord</a>
-
-              <!-- Dribbble -->
-              <a class="button button-dribbble" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/dribbble.svg" alt="Dribbble Logo">Dribbble</a>
-
-              <!-- Etsy -->
-              <a class="button button-etsy" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/etsy.svg" alt="Etsy Logo">Shop on Etsy</a>
-
-              <!-- Facebook -->
-              <a class="button button-faceb" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/facebook.svg" alt="Facebook Logo">Find us on Facebook</a>
-
-              <!-- Facebook Messenger -->
-              <a class="button button-messenger" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/messenger.svg" alt="Messenger Logo">Chat on Messenger</a>
-
-              <!-- Figma -->
-              <a class="button button-figma" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/figma.svg" alt="Figma Logo">Figma Community</a>
-
-              <!-- Fiverr -->
-              <a class="button button-fiverr" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/fiverr.svg" alt="Fiverr Logo">Fiverr Gig</a>
-
-              <!-- Flickr -->
-              <a class="button button-flickr" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/flickr.svg" alt="Flickr Logo">Flickr</a>
-
-              <!-- GitHub -->
-              <a class="button button-github" href="https://github.com/Emgenius" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">GitHub</a>
-
-              <!-- GitLab -->
-              <a class="button button-gitlab" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/gitlab.svg" alt="GitLab Logo">GitLab</a>
-
-              <!-- GoFundMe -->
-              <a class="button button-gofundme" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/gofundme.svg" alt="GoFundMe Logo">GoFundMe</a>
-
-              <!-- Goodreads -->
-              <a class="button button-goodreads" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/goodreads.svg" alt="Goodreads Logo">Goodreads</a>
-
-              <!-- Google Drive -->
-              <a class="button button-google-black" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/google-drive.svg" alt="Google Drive Logo">View in Google Drive</a>
-
-              <!-- Google Play Store -->
-              <a class="button button-playstore" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/google-play.svg" alt="Google Play Store Logo">Google Play Store</a>
-
-              <!-- Google Scholar -->
-              <a class="button button-google-scholar" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/google-scholar.svg" alt="Google Scholar Logo">Google Scholar</a>
-
-              <!-- Hashnode -->
-              <a class="button button-hashnode" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/hashnode.svg" alt="Hashnode Logo">Hashnode</a>
-              
-              <!-- Instagram -->
-              <a class="button button-instagram" href="https://www.instagram.com/emgenius1" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/instagram.svg" alt="Instagram Logo">Instagram</a>
-
-              <!-- Kick -->
-              <a class="button button-kick" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/kick.svg" alt="Kick Logo">Kick</a>
-
-              <!-- Kick Alt -->
-              <a class="button button-kick-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/kick-alt.svg" alt="Kick Logo">Kick</a>
-
-              <!-- Kickstarter -->
-              <a class="button button-kickstarter" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/kickstarter.svg" alt="Kickstarter Logo">Kickstarter</a>
-
-              <!-- Kit -->
-              <a class="button button-kit" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/kit.svg" alt="Kit Logo">Kit</a>
-
-              <!-- Ko-fi -->
-              <a class="button button-ko-fi" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/ko-fi.svg" alt="Ko-fi Logo">Support me on Ko-fi</a>
-
-              <!-- Last.fm -->
-              <a class="button button-last-fm" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/last-fm.svg" alt="">Last.fm</a>
-
-              <!-- Letterboxd -->
-              <a class="button button-letterboxd" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/letterboxd.svg" alt="">Letterboxd</a>
-
-              <!-- Line -->
-              <a class="button button-line" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/line.svg" alt="Line Logo">Line</a>
-
-              <!-- LinkedIn -->
-              <a class="button button-linked" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/linkedin.svg" alt="LinkedIn Logo">LinkedIn</a>
-
-              <!-- Mailchimp -->
-              <a class="button button-mailchimp" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/mailchimp.svg" alt="Mailchimp Logo">Mailchimp</a>
-
-              <!-- Mastodon -->
-              <a class="button button-mastodon" href="https://piaille.fr/@emgenius" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/mastodon.svg" alt="Mastodon Logo">Mastodon</a>
-
-              <!-- Matrix -->
-              <a class="button button-matrix" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/matrix.svg" alt="Matrix Logo">Matrix</a>
-
-              <!-- Medium -->
-              <a class="button button-medium" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/medium.svg" alt="Medium Logo">Medium</a>
-
-              <!-- Meetup -->
-              <a class="button button-meetup" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/meetup.svg" alt="Meetup Logo">Meetup</a>
-
-              <!-- Meetup Alt -->
-              <a class="button button-meetup-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/meetup-alt.svg" alt="Meetup Logo">Meetup</a>
-
-              <!-- Microsoft Store -->
-              <a class="button button-microsoft" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/microsoft.svg" alt="Microsoft Logo">Get it from Microsoft</a>
-
-              <!-- Notion -->
-              <a class="button button-notion" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/notion.svg" alt="Notion Logo">Notion</a>
-
-              <!-- Obsidian -->
-              <a class="button button-obsidian" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/obsidian.svg" alt="Obsidian Logo">Obsidian</a>
-
-              <!-- OnlyFans -->
-              <a class="button button-onlyfans" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/onlyfans.svg" alt="OnlyFans Logo">OnlyFans (18+)</a>
-
-              <!-- Patreon -->
-              <a class="button button-patreon" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/patreon.svg" alt="Patreon Logo">Patreon</a>
-
-              <!-- PayPal -->
-              <a class="button button-paypal" style="display: none;"href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/paypal.svg" alt="PayPal Logo">PayPal</a>
-
-              <!-- Pinterest -->
-              <a class="button button-pinterest" href="https://fr.pinterest.com/Emgenius1/_profile/" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/pinterest.svg" alt="Pinterest Logo">Pinterest</a>
-
-              <!-- Product Hunt -->
-              <a class="button button-product-hunt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/product-hunt.svg" alt="Product Hunt Logo">Product Hunt</a>
-
-              <!-- Reddit -->
-              <a class="button button-reddit" href="https://www.reddit.com/user/Emgenius1/" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/reddit.svg" alt="Reddit Logo">Reddit</a>
-
-              <!-- Shop -->
-              <a class="button button-shop" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/shop.svg" alt="Shop Logo">Buy with Shop</a>
-
-              <!-- Signal -->
-              <a class="button button-signal" style="display: none;"href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/signal.svg" alt="Signal Logo">Signal</a>
-
-              <!-- Signal Alt -->
-              <a class="button button-signal-alt" style="display: none; "href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/signal-alt.svg" alt="Signal Logo">Signal</a>
-
-              <!-- Slack -->
-              <a class="button button-slack" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/slack.svg" alt="Slack Logo">Join Slack</a>
-
-              <!-- Snapchat -->
-              <a class="button button-snapchat" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/snapchat.svg" alt="Snapchat Logo">Snapchat</a>
-
-              <!-- SoundCloud -->
-              <a class="button button-soundcloud" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/soundcloud.svg" alt="SoundCloud Logo">SoundCloud</a>
-
-              <!-- Spotify -->
-              <a class="button button-spotify" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/spotify.svg" alt="Spotify Logo">Listen on Spotify</a>
-
-              <!-- Spotify Alt -->
-              <a class="button button-spotify-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/spotify-alt.svg" alt="Spotify Logo">Listen on Spotify</a>
-
-              <!-- Square -->
-              <a class="button button-square" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/square.svg" alt="Square Logo">Buy with Square</a>
-
-              <!-- Stack Overflow -->
-              <a class="button button-stack-overflow" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/stack-overflow.svg" alt="Stack Overflow Logo">Stack Overflow</a>
-
-              <!-- Steam -->
-              <a class="button button-steam" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/steam.svg" alt="Steam Logo">Steam</a>
-
-              <!-- Steam Alt -->
-              <a class="button button-steam-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/steam.svg" alt="Steam Logo">Steam</a>
-
-              <!-- Strava -->
-              <a class="button button-strava" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/strava.svg" alt="Strava Logo">Strava</a>
-
-              <!-- Substack -->
-              <a class="button button-substack" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/substack.svg" alt="Substack Logo">Substack</a>
-
-              <!-- Telegram -->
-              <a class="button button-telegram" href="https://t.me/emgenius" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/telegram.svg" alt="Telegram Logo">Telegram</a>
-
-              <!-- Threads -->
-              <a class="button button-threads" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/threads.svg" alt="Threads Logo">Threads</a>
-
-              <!-- Threema -->
-              <a class="button button-threema" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/threema.svg" alt="Threema Logo">Threema</a>
-
-              <!-- TikTok -->
-              <a class="button button-tiktok" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/tiktok.svg" alt="TikTok Logo">TikTok</a>
-
-              <!-- Trello -->
-              <a class="button button-trello" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/trello.svg" alt="Trello Logo">Trello</a>
-
-              <!-- Tumblr -->
-              <a class="button button-tumb" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/tumblr.svg" alt="Tumblr Logo">Tumblr</a>
-
-              <!-- Twitch -->
-              <a class="button button-twitch" href="https://www.twitch.tv/emgenius1" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/twitch.svg" alt="Twitch Logo">Twitch</a>
-
-              <!-- Unsplash -->
-              <a class="button button-unsplash" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/unsplash.svg" alt="Unsplash Logo">Unsplash</a>
-
-              <!-- Venmo -->
-              <a class="button button-venmo" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/venmo.svg" alt="Venmo Logo">Venmo</a>
-
-              <!-- Vimeo -->
-              <a class="button button-vimeo" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/vimeo.svg" alt="Vimeo Logo">Vimeo</a>
-
-              <!-- VSCO -->
-              <a class="button button-vsco" href="https://vsco.co/emgenius/gallery" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/vsco.svg" alt="VSCO Logo">VSCO</a>
-
-              <!-- WhatsApp -->
-              <a class="button button-whatsapp" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/whatsapp.svg" alt="WhatsApp Logo">WhatsApp</a>
-
-              <!-- WordPress -->
-              <a class="button button-wordpress" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/wordpress.svg" alt="WordPress Logo">WordPress</a>
-
-              <!-- X -->
-              <a class="button button-x" style="display: none;" href="https://x.com/emgenius" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/x.svg" alt="X Logo">Follow on X</a>
-
-              <!-- YouTube -->
-              <a class="button button-yt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/youtube.svg" alt="YouTube Logo">YouTube</a>
-
-              <!-- YouTube Alt -->
-              <a class="button button-yt-alt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/youtube-alt.svg" alt="YouTube Logo">YouTube</a>
-
-              <!-- YouTube Music -->
-              <a class="button button-yt" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/youtube-music.svg" alt="YouTube Music Logo">Listen on YouTube Music</a>
-
-              <!-- Zoom -->
-              <a class="button button-zoom" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/zoom.svg" alt="Zoom Logo">Join Zoom Webinar</a>
-
-              <!-- Generic Blog -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-blog.svg" alt="Blog Icon">Read our blog</a>
-
-              <!-- Generic Calendar -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-calendar.svg" alt="Calendar Icon">Event RSVP</a>
-
-              <!-- Generic Cloud -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-cloud.svg" alt="Cloud Icon">Download File</a>
-
-              <!-- Generic Code -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-code.svg" alt="Code Icon">View the code</a>
-
-              <!-- Generic Computer -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-computer.svg" alt="Computer Icon">Homelab Setup</a>
-
-              <!-- Generic Email -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-email.svg" alt="Email Icon">Email Us</a>
-
-              <!-- Generic Email Alt -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-email-alt.svg" alt="Email Icon">Email Us</a>
-
-              <!-- Generic Homepage -->
-              <a class="button button-default" href="http://emgenius.art/" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-homepage.svg" alt="Homepage Icon">Visit Homepage</a>
-
-              <!-- Generic Map -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-map.svg" alt="Map Icon">Get Directions</a>
-
-              <!-- Generic Phone -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-phone.svg" alt="Phone Icon">Call Us</a>
-
-              <!-- Generic Review -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-review.svg" alt="Review Icon">Leave us a review</a>
-
-              <!-- Generic RSS -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-rss.svg" alt="RSS Icon">RSS Subscribe</a>
-
-              <!-- Generic Shopping Bag -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-shopping-bag.svg" alt="Shopping Bag Icon">Visit Our Shop</a>
-
-              <!-- Generic Shopping Tag -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-shopping-tag.svg" alt="Shopping Tag Icon">10% Discount</a>
-
-              <!-- Generic SMS -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-sms.svg" alt="SMS Icon">Send us a message</a>
-
-              <!-- Generic Website -->
-              <a class="button button-default" style="display: none;" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-website.svg" alt="Website Icon">Visit Website</a>
-
-              <!-- LittleLink Extended -->
-              <a class="button button-default" style="display: none;" href="https://github.com/sethcottle/littlelink-extended" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/littlelink.svg" alt="LittleLink Logo">LittleLink Extended</a>
-
-      </div>
-
-      <!-- Feel free to add your own footer information, including updating `privacy.html` to reflect how your LittleLink fork is set up -->
-      <footer>
-        <a href="privacy.html">Privacy Policy</a> | Crée ton Little link en forkant <a href="https://littlelink.io" target="_blank" rel="noopener">LittleLink</a>
-      </footer>
-
+  <!-- Bluesky -->
+  <a class="link-card featured" href="https://bsky.app/profile/emgenius.art" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 600 530" fill="white"><path d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.45-163.25-81.433C20.15 217.613 10 86.535 10 68.825c0-88.687 77.742-60.816 125.72-24.795z"/></svg>
     </div>
-  </div>
+    <div>
+      <div class="link-card-label">Bluesky</div>
+      <div class="link-card-sub">@emgenius.art</div>
+    </div>
+  </a>
+
+  <!-- GitHub -->
+  <a class="link-card" href="https://github.com/Emgenius" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">GitHub</div>
+      <div class="link-card-sub">Emgenius</div>
+    </div>
+  </a>
+
+  <!-- Instagram -->
+  <a class="link-card featured" href="https://www.instagram.com/emgenius1" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">Instagram</div>
+      <div class="link-card-sub">emgenius1</div>
+    </div>
+  </a>
+
+  <!-- Mastodon -->
+  <a class="link-card" href="https://piaille.fr/@emgenius" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 74 79" fill="white"><path d="M73.7 46.7c-1 5.1-8.9 10.7-18 11.8-4.7.6-9.4 1.1-14.4.9-8.1-.4-14.5-1.8-14.5-1.8 0 .7.1 1.4.1 2.1.9 7.2 7 7.6 12.7 7.8 5.8.2 10.9-.8 10.9-.8l.2 5.4s-4 2.2-11.2 2.6c-4 .2-8.9-.1-14.6-1.5C11.5 70.6 3.3 62 2 51.9 1.6 49 1.4 46 1.4 43c0-15.2 9.9-19.6 9.9-19.6 5-2.4 13.5-3.4 22.4-3.5h.2c8.8.1 17.4 1.1 22.4 3.5 0 0 9.9 4.4 9.9 19.6-.1.6-.2 2.4-.5 3.7zM61.7 28.5c-3-3.2-7-4.8-11.8-4.8s-8.2 1.9-10.5 5.7l-2.3 3.8-2.3-3.8c-2.3-3.8-5.8-5.7-10.5-5.7-4.8 0-8.8 1.6-11.8 4.8C9.5 31.7 8 35.9 8 41v21.2h8.4V41.6c0-5.1 2.2-7.7 6.5-7.7 4.8 0 7.2 3.1 7.2 9.2v13.4h8.4V43.1c0-6.1 2.4-9.2 7.2-9.2 4.3 0 6.5 2.6 6.5 7.7v20.6H60V41c0-5.1-1.5-9.3-4.4-12.5h.1z"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">Mastodon</div>
+      <div class="link-card-sub">@emgenius</div>
+    </div>
+  </a>
+
+  <!-- Pinterest -->
+  <a class="link-card" href="https://fr.pinterest.com/Emgenius1/_profile/" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">Pinterest</div>
+      <div class="link-card-sub">Emgenius1</div>
+    </div>
+  </a>
+
+  <!-- Reddit -->
+  <a class="link-card featured" href="https://www.reddit.com/user/Emgenius1/" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">Reddit</div>
+      <div class="link-card-sub">Emgenius1</div>
+    </div>
+  </a>
+
+  <!-- Telegram -->
+  <a class="link-card" href="https://t.me/emgenius" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">Telegram</div>
+      <div class="link-card-sub">@emgenius</div>
+    </div>
+  </a>
+
+  <!-- Twitch -->
+  <a class="link-card featured" href="https://www.twitch.tv/emgenius1" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">Twitch</div>
+      <div class="link-card-sub">emgenius1</div>
+    </div>
+  </a>
+
+  <!-- VSCO -->
+  <a class="link-card" href="https://vsco.co/emgenius/gallery" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">VSCO</div>
+      <div class="link-card-sub">emgenius</div>
+    </div>
+  </a>
+
+  <!-- Homepage -->
+  <a class="link-card featured" href="http://emgenius.art/" target="_blank" rel="noopener">
+    <div class="link-card-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    </div>
+    <div>
+      <div class="link-card-label">Homepage</div>
+      <div class="link-card-sub">emgenius.art</div>
+    </div>
+  </a>
+
+</div>
+<!-- fin link-card mosaic -->
+
+<!-- Feel free to add your own footer information -->
+<footer>
+  <a href="privacy.html">Privacy Policy</a> | Crée ton Little link en forkant <a href="https://littlelink.io" target="_blank" rel="noopener">LittleLink</a>
+</footer>
+
+</div>
+
+</div>
 
 </body>
-
 </html>
