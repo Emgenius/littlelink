@@ -278,6 +278,53 @@ img.avatar {
     bottom: 14px; right: 14px;
   }
 }
+
+/* ══════════════════════════════════════
+   MOBILE — icônes seules sous 480px
+══════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  /* Grille plus dense : 5 colonnes d'icônes */
+  .button-stack {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 8px !important;
+    padding: 0 10px !important;
+  }
+
+  /* Card réduite à un carré centré */
+  .link-card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 0.75rem 0.4rem !important;
+    border-radius: 8px;
+  }
+
+  /* Icône un peu plus grande */
+  .link-card-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .link-card-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  /* Texte masqué */
+  .link-card-label,
+  .link-card-sub {
+    display: none !important;
+  }
+
+  /* Mood frame plus petit en bas */
+  .mood-frame {
+    width: 72px !important;
+    height: 72px !important;
+    bottom: 12px !important;
+    right: 12px !important;
+  }
+}
 </style>
 </head>
 
